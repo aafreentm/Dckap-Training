@@ -1,0 +1,237 @@
+<?php 
+       
+/****get only us states all *************/
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$regionFactory = $objectManager->create('Magento\Directory\Model\ResourceModel\Region\CollectionFactory')->create();
+$regionFactory->addFieldToFilter('country_id', array('eq' => 'US'));
+#echo '<pre>';print_r($regionFactory->getData());exit;
+/*****/ 
+/****get countries all *************/
+/*
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+    $allowerdContries = $objectManager->get('Magento\Directory\Model\AllowedCountries')->getAllowedCountries() ;
+    $countryFactory = $objectManager->get('\Magento\Directory\Model\CountryFactory');
+    
+    #echo "<pre>"; print_r($allowerdContries);exit;
+    
+    $countries = array();
+    foreach($allowerdContries as $countryCode)
+    {
+            if($countryCode)
+            {
+
+                $data = $countryFactory->create()->loadByCode($countryCode);
+                $countries[$countryCode] =  $data->getName();
+            }
+    }
+*/
+ /*****/   
+
+$helper = \Magento\Framework\App\ObjectManager::getInstance()->get('DCKAP\Training\Helper\Data'); 
+if($helper->isEnable()==1){    
+?>
+
+<div>
+        <h2>Add Customer</h2>
+</div>
+<div class="col-md-8">
+        <form name="addData" method="post" id="addData" class="form"
+               action="<?php echo $this->getUrl('mymodule/index/save', ['_secure' => true]);?>"
+         id="custom-form"
+         method="post"
+              data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+              data-mage-init='{"validation":{}}'>
+            <fieldset class="fieldset">
+                <legend class="legend"><span><?= $block->escapeHtmlAttr(__('Fill Detail')) ?></span></legend>
+                <fieldset class="fieldset row">
+                    <div class="fields col-md-6">
+                        <div class="field name required">
+                            <label class="label" for="title"><span><?= $block->
+                                escapeHtmlAttr(__('Name')) ?></span></label>
+                            <div class="control">
+                                <input name="name" id="name" title="Name" value="" class="input-text" type="text"
+                                       data-validate="{required:true, 'validate-alphanum-with-spaces':true}">
+                            </div>
+                        </div>
+                        <div class="no-name"></div>
+                        <div class="field name required">
+                            <label class="label" for="title"><span><?= $block->
+                                escapeHtmlAttr(__('Email')) ?></span></label>
+                            <div class="control">
+                                <input name="email" id="email" title="Email" value="" class="input-text" type="text"
+                                       data-validate="{required:true, 'validate-email':true}">
+                            </div>
+                        </div>
+                        <div class="no-email"></div>
+                        <div class="field name required">
+                            <label class="label" for="title"><span><?= $block->escapeHtmlAttr(__('Contact No')) ?></span></label>
+                            <div class="control">
+                                <input name="telephone" id="telephone" title="Telephone" value="" class="input-text"
+                                       type="text" data-validate="{required:true}">
+                            </div>
+                        </div>
+                        <div class="no-telephone"></div>
+                        <div class="field name required">
+                        <label for="dob" class="label"><span><?php /* @escapeNotVerified */ echo __('Date of birth') ?></span>
+                        </label>
+                      
+                       <input type="text" name="dob" id="dob" value="" class="datepicker input-text" data-validate="{required:true}">
+                        
+                      </div>
+
+                       <div class="no-dob" style="color:red;"></div>
+
+                       <div class="field name required">
+                            <label class="label" for="title"><span><?php /* @escapeNotVerified */ echo __('Age') ?></span></label>
+                            <div class="control">
+                                <input name="age" id="age" title="age" value="" class="input-text"
+                                       type="text" data-validate="{required:true}">
+                            </div>
+                        </div>
+                        <div class="no-age" style="color:red;"></div>
+
+                     <?php /*$_countries = array(['label' => 'chennai','value'=>'chennai'],['label' => 'chennai','value'=>'chennai']); ?>
+                        <?php if (count($_countries) > 0): ?>
+                         <select name="country" id="country">
+                         <option value="">-- Select Country --</option>
+                         <?php foreach($_countries as $_country): ?>
+                        <option value="<?php echo $_country['value'] ?>">
+                         <?php echo $_country['label'] ?>
+                         </option>
+                         <?php endforeach; ?>
+                         </select>
+                        <?php endif; */?>
+                        <div class="field name required">
+                         <label for="country" class="label"><span><?php /* @escapeNotVerified */ echo __('Country') ?></span>
+                        </label>
+
+                        <?php if(count($regionFactory->getData()) > 0){?>
+                        <select name="country" id="country" data-validate="{required:true}">
+                            <option value="">--- Please select country ---</option>
+                            <?php foreach($regionFactory->getData() as $states)
+                              {
+                            ?>
+                                <option value="<?php echo $states['name']; ?>"><?php echo $states['name'] ?></option>
+                            <?php } ?>
+                        </select>
+                        <?php } ?>
+
+                     </div>
+                    <div class="no-country" style="color:red;"></div>
+
+                
+                    </div>
+                </fieldset>
+            </fieldset>
+            <div class="actions-toolbar">
+            <div class="primary">
+                <input type="hidden" name="hideit" id="hideit" value="" />
+                <button type="submit"  title="<?php  echo __('Submit') ?>" class="action submit primary" id="custom_btn">
+                    <span><?php  echo __('Submit') ?></span>
+                </button>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+<?php
+ }else{ 
+ ?>
+ <h1> Registration closed / Module Disabled </h1>
+ <?php
+ }
+ ?>
+
+
+<script>
+require(["jquery", "mage/calendar"], function($){
+        $("#dob").datepicker({
+             onSelect: function(value, ui) {
+            var today = new Date(),
+                dob = new Date(value),
+                age = new Date(today - dob).getFullYear() - 1970;
+
+               // alert(age);
+
+            $('#age').val(age);
+        },
+          showMonthAfterYear: false,
+          dateFormat:'mm/dd/yy',
+          changeMonth: true,
+          changeYear: true,
+          yearRange: '2000:2020',
+        })
+});
+</script>
+
+<!-- <script>
+    require(["jquery"], function ($) {
+$(document).on('change','#country',function() {
+            
+             var param = 'country='+$('#country').val();
+            
+    });
+    });
+</script> -->
+
+<script>
+    require(["jquery"], function ($) {
+
+       $(document).on('change','#country',function() {     
+             var param = $('#country').val();
+             
+             if(param==''){
+
+                $(".no-country").html("This is a required field.");
+
+             }else{
+                $(".no-country").html("");
+             }
+            
+      });
+    });
+
+    require(["jquery"], function ($) {
+    $(document).ready(function () {
+        $('#custom_btn').click(function () { 
+        // The button type should be "button" and not submit
+           // alert($('#dob').val());
+           if($(('#country').val()=='')&&($('#dob').val()=='')&&($('#name').val()=='')&&($('#email').val()=='')&&($('#telephone').val()=='')){
+              $(".no-country").html("This is a required field.");
+                $(".no-dob").html("This is a required field.");
+                 $(".no-age").html("This is a required field.");
+               
+                 return true;
+             }else if(($('#country').val()=='')&&($('#dob').val()=='')&&($('#name').val()!='')&&($('#email').val()!='')&&($('#telephone').val()!='')){
+
+                $(".no-country").html("This is a required field.");
+                $(".no-dob").html("This is a required field.");
+                 return true;
+             }else if(($('#country').val()!='')&&($('#dob').val()=='')&&($('#name').val()!='')&&($('#email').val()!='')&&($('#telephone').val()!='')){
+                $(".no-dob").html("This is a required field.");
+                 return true;
+             }else if(($('#country').val()=='')&&($('#dob').val()!='')){
+                $(".no-country").html("This is a required field.");
+                 return true;
+             }else if(($('#country').val()!='')&&($('#dob').val()!='')&&($('#name').val()=='')&&($('#email').val()=='')&&($('#telephone').val()=='')){
+                $(".no-name").html("This is a required field.");
+                $(".no-email").html("This is a required field.");
+                $(".no-telephone").html("This is a required field.");
+                 return true;
+             }else{
+                $(".no-dob").html("");
+                $(".no-country").html("");
+                return false;
+             }
+
+             var dataForm = $('#addData');
+              dataForm.validation('isValid');
+
+              
+        });
+    });
+});
+</script> 
+
