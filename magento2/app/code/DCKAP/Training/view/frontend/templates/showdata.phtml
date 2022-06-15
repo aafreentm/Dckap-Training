@@ -1,6 +1,5 @@
 <?php
  
-  $clearCache = $block->cacheClear();
 
 $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $cacheTypeList = $objectManager->get(\Magento\Framework\App\Cache\Manager::class);
@@ -9,6 +8,7 @@ $cacheTypeList->flush($cacheTypeList->getAvailableTypes());
 
  $collection = $block->getCollection();
   $helper = \Magento\Framework\App\ObjectManager::getInstance()->get('DCKAP\Training\Helper\Data');
+  #echo '<pre>';print_r($helper->isEnable());exit;
 if ($collection->count()) {
 ?>
 

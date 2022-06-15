@@ -5,6 +5,12 @@ $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 $regionFactory = $objectManager->create('Magento\Directory\Model\ResourceModel\Region\CollectionFactory')->create();
 $regionFactory->addFieldToFilter('country_id', array('eq' => 'US'));
 #echo '<pre>';print_r($regionFactory->getData());exit;
+
+/*$custom_banner_enable = $objectManager->create('\Magento\Catalog\Model\ResourceModel\Category\CollectionFactory')->create()
+            ->addAttributeToFilter('custom_banner_enable', '1');
+echo'<pre>';print_r($custom_banner_enable);exit;*/ 
+
+
 /*****/ 
 /****get countries all *************/
 /*

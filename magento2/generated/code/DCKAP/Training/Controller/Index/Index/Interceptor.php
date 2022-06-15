@@ -8,10 +8,10 @@ class Interceptor extends \DCKAP\Training\Controller\Index\Index implements \Mag
 {
     use \Magento\Framework\Interception\Interceptor;
 
-    public function __construct(\Magento\Framework\App\Action\Context $context, \Magento\Framework\View\Result\PageFactory $resultPageFactory, \Magento\Framework\App\Cache\Manager $cacheManager)
+    public function __construct(\Magento\Framework\App\Action\Context $context, \Magento\Framework\View\Result\PageFactory $resultPageFactory)
     {
         $this->___init();
-        parent::__construct($context, $resultPageFactory, $cacheManager);
+        parent::__construct($context, $resultPageFactory);
     }
 
     /**

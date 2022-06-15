@@ -11,21 +11,16 @@ class Index extends Action
  
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-        \Magento\Framework\App\Cache\Manager $cacheManager
+        \Magento\Framework\View\Result\PageFactory $resultPageFactory
     ) {
         $this->_resultPageFactory = $resultPageFactory;
-        $this->cacheManager = $cacheManager;
+        
         parent::__construct($context);
     }
  
     public function execute()
     {
         //echo "Module Cretaed Successfully";
-
-          $this->cacheManager->flush($this->cacheManager->getAvailableTypes());
-          // or this
-         //$this->cacheManager->clean($this->cacheManager->getAvailableTypes());
          return $this->_resultPageFactory->create();
     }
 }

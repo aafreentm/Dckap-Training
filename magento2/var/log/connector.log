@@ -1,0 +1,4 @@
+[2022-06-13 11:15:30] dotdigital.INFO: ERROR Creditmemo Order not found :7, quote id : 8, store id 1 [] []
+[2022-06-14 06:46:06] dotdigital.DEBUG: Account callback request {"isAjax":"true","origin":"https://magentosignup.dotdigital.com","apispaceid":"","token":"","apiendpoint":"","apiusername":"","apipassword":"","form_key":"AgmP3bvURkmxWNB7"} []
+[2022-06-14 06:46:12] dotdigital.DEBUG: Account callback request {"isAjax":"true","origin":"https://magentosignup.dotdigital.com","apispaceid":"","token":"","apiendpoint":"","apiusername":"","apipassword":"","form_key":"AgmP3bvURkmxWNB7"} []
+[2022-06-14 07:04:26] dotdigital.DEBUG: Account callback request {"isAjax":"true","origin":"https://magentosignup.dotdigital.com","apispaceid":"","token":"","apiendpoint":"","apiusername":"","apipassword":"","form_key":"AgmP3bvURkmxWNB7"} []
