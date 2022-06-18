@@ -1,4 +1,4 @@
-a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1655288449;s:6:"expire";i:1686824449;s:4:"tags";s:37:"f73_LAYOUT_GENERAL_CACHE_TAG,f73_MAGE";}
+a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1655554548;s:6:"expire";i:1687090548;s:4:"tags";s:37:"f73_LAYOUT_GENERAL_CACHE_TAG,f73_MAGE";}
 <?xml version="1.0"?>
 <layouts xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><handle id="catalog_category_view"><body/>
 </handle><handle id="catalogsearch_advanced_index"><body/>
@@ -7048,6 +7048,35 @@ a:4:{s:4:"hash";s:0:"";s:5:"mtime";i:1655288449;s:6:"expire";i:1686824449;s:4:"t
 <body>
    <referenceContainer name="form.additional.info">
       <block class="Amazon\Payment\Block\Widget\ResetPassword" name="amazon.pay.password.reset" before="-" template="Amazon_Payment::widget/resetpassword.phtml" cacheable="false"/>
+   </referenceContainer>
+</body>
+</handle><handle id="catalog_category_view"><head>
+   <css src="DCKAP_Training::css/colorcart.css"/>
+</head>
+<body>
+   <referenceContainer name="content">
+      <referenceBlock name="category.products.list">
+         <action method="setTemplate">
+            <argument name="template" xsi:type="string">DCKAP_Training::catalog/product/view/list.phtml</argument>
+         </action>
+      </referenceBlock>
+   </referenceContainer>
+</body>
+</handle><handle id="catalog_product_view"><head>
+   <css src="DCKAP_Training::css/colorcart.css"/>
+</head>
+<body>
+   <referenceContainer name="content">
+      <referenceBlock name="product.info.addtocart">
+         <action method="setTemplate">
+            <argument name="template" xsi:type="string">DCKAP_Training::catalog/product/view/addtocart.phtml</argument>
+         </action>
+      </referenceBlock>
+   </referenceContainer>
+</body>
+</handle><handle id="checkout_cart_index"><body>
+   <referenceContainer name="additional.product.info">
+      <block class="DCKAP\Training\Block\AdditionalProInfo" name="cart_item_addional_info" template="DCKAP_Training::checkout/cart/item/additionalinfo.phtml" cacheable="false"/>
    </referenceContainer>
 </body>
 </handle><handle id="default"><body>
