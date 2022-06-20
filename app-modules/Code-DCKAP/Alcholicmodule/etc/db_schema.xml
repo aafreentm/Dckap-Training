@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+   	<table name="demo_mymodule_users" resource="default" engine="innodb" comment="Users Contact Table">
+
+		<column xsi:type="smallint" name="id" padding="6" unsigned="false" nullable="false" identity="true" comment="ID" />
+		<column xsi:type="varchar" name="name" nullable="false" length="25" comment="Name" />
+		<column xsi:type="varchar" name="email" nullable="false" length="25" comment="Email" />
+		<column xsi:type="varchar" name="phone_no" nullable="false" length="11" comment="Phone Number" />
+		<column xsi:type="varchar" name="dob" nullable="false" length="11" comment="dob" />
+		<column xsi:type="varchar" name="age" nullable="false" length="11" comment="age" />
+		<column xsi:type="varchar" name="country" nullable="false" length="11" comment="country" />
+		<!--<column xsi:type="varchar" name="message" nullable="false" length="255" comment="Message" /> -->
+		<column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+            comment="Creation Time"/>
+    	<column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+            comment="Update Time"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="id" />
+		</constraint>
+		<index referenceId="SOME_INDENTIFIER" indexType="fulltext">
+        <column name="name"/>
+        <column name="email"/>
+        <column name="phone_no"/>
+        <column name="dob"/>
+        <column name="age"/>
+        <column name="country"/>
+    </index>
+   	</table>
+</schema>

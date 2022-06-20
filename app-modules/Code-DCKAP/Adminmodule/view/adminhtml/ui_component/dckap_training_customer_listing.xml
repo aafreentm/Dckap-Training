@@ -1,0 +1,308 @@
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">dckap_training_customer_listing.dckap_training_customer_listing_data_source</item>
+            <item name="deps" xsi:type="string">dckap_training_customer_listing.dckap_training_customer_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">dckap_training_listing_columns</item>
+        <item name="buttons" xsi:type="array">
+            <item name="add" xsi:type="array">
+                <item name="name" xsi:type="string">add</item>
+                <item name="label" xsi:type="string" translate="true">Add New Customer</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">*/*/new</item>
+            </item>
+        </item>
+    </argument>
+    
+    <dataSource name="nameOfDataSource">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider</argument>
+            <argument name="name" xsi:type="string">dckap_training_customer_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="indexField" xsi:type="string">id</item>
+                    </item>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+
+
+    <listingToolbar name="listing_top">
+        <settings>
+        <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+     <!--    <massaction name="listing_massaction">
+        <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+        <item name="selectProvider" xsi:type="string">dckap_training_customer_listing.dckap_training_customer_listing.dckap_training_listing_columns.ids</item>
+        <item name="indexField" xsi:type="string">id</item>
+        </item>
+        </argument>
+        <action name="delete">
+        <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+        <item name="type" xsi:type="string">delete</item>
+        <item name="label" xsi:type="string" translate="true">Delete</item>
+        <item name="url" xsi:type="url" path="mymodule/customer/massDelete"/>
+        <item name="confirm" xsi:type="array">
+        <item name="name" xsi:type="string" translate="true">Delete items</item>
+        <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+        </item>
+        </item>
+        </argument>
+        </action> 
+        <action name="edit">
+        <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+        <item name="type" xsi:type="string">edit</item>
+        <item name="label" xsi:type="string" translate="true">Edit</item>
+        <item name="callback" xsi:type="array">
+        <item name="provider" xsi:type="string">dckap_training_customer_listing.dckap_training_customer_listing.dckap_training_columns_editor</item>
+        <item name="target" xsi:type="string">editSelected</item>
+        </item>
+        </item>
+        </argument>
+        </action>
+        <action name="disable">
+        <settings>
+        <url path="mymodule/customer/massDisable"/>
+        <type>disable</type>
+        <label translate="true">Disable</label>
+        </settings>
+        </action>
+        <action name="enable">
+        <settings>
+        <url path="mymodule/customer/massEnable"/>
+        <type>enable</type>
+        <label translate="true">Enable</label>
+        </settings>
+        </action>  
+        </massaction> -->
+
+        <massaction name="listing_massaction">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+
+            <item name="selectProvider" xsi:type="string">dckap_training_customer_listing.dckap_training_customer_listing.dckap_training_listing_columns.ids</item>
+              <item name="component" xsi:type="string">Magento_Ui/js/grid/tree-massactions</item>
+              <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+            <action name="delete">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="type" xsi:type="string">delete</item>
+                        <item name="label" xsi:type="string" translate="true">Delete</item>
+                        <item name="url" xsi:type="url" path="mymodule/customer/massDelete"/>
+                        <item name="confirm" xsi:type="array">
+                            <item name="title" xsi:type="string" translate="true">Delete item</item>
+                            <item name="message" xsi:type="string" translate="true">Are you sure you wan't to delete selected items?</item>
+                        </item>
+                    </item>
+                </argument>
+            </action>
+        </massaction>
+
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+        
+
+        <filterSearch name="fulltext" >
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/grid/search/search</item>
+                <item name="displayArea" xsi:type="string">dataGridFilters</item>
+                <item name="provider" xsi:type="string">dckap_training_customer_listing.dckap_training_customer_listing_data_source</item>
+                <item name="chipsProvider" xsi:type="string">dckap_training_customer_listing.dckap_training_customer_listing.listing_top.listing_filters_chips</item>
+                <item name="storageConfig" xsi:type="array">
+                    <item name="provider" xsi:type="string">dckap_training_customer_listing.dckap_training_customer_listing.listing_top.bookmarks</item>
+                    <item name="namespace" xsi:type="string">current.search</item>
+                </item>
+            </item>
+        </argument>
+    </filterSearch>
+        <!-- <exportButton name="export_button">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="selectProvider" xsi:type="string">dckap_training_customer_listing.dckap_training_listing_columns.ids</item>
+                </item>
+            </argument>
+       </exportButton> -->
+
+        <exportButton class="Magento\Ui\Component\ExportButton">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="options" xsi:type="array">
+                        <item name="csv" xsi:type="array">
+                            <item name="value" xsi:type="string">csv</item>
+                            <item name="label" xsi:type="string" translate="true">CSV</item>
+                            <item name="url" xsi:type="string">mui/export/gridToCsv</item>
+                        </item>
+                        <item name="xml" xsi:type="array">
+                            <item name="value" xsi:type="string">xml</item>
+                            <item name="label" xsi:type="string" translate="true">Excel XML</item>
+                            <item name="url" xsi:type="string">mui/export/gridToXml</item>                          
+                        </item> 
+                    </item>
+                </item>
+            </argument>
+        </exportButton>
+
+    </listingToolbar>
+    <columns name="dckap_training_listing_columns">
+      
+         <selectionsColumn name="ids">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="resizeEnabled" xsi:type="boolean">false</item>
+                <item name="resizeDefaultWidth" xsi:type="string">55</item>
+                <item name="indexField" xsi:type="string">id</item>
+            </item>
+       </argument>
+    </selectionsColumn>
+        <column name="id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">textRange</item>
+                    <item name="sorting" xsi:type="string">asc</item>
+                    <item name="label" xsi:type="string" translate="true">ID</item>
+                </item>
+            </argument>
+        </column>
+        <column name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">name</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Name</item>
+                </item>
+            </argument>
+        </column>
+
+         <column name="email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">email</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Email</item>
+                </item>
+            </argument>
+        </column>
+
+        <column name="telephone">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">telephone</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" >Contact</item>
+                </item>
+            </argument>
+        </column>
+        <column name="dob">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">dob</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">DOB</item>
+                </item>
+            </argument>
+        </column>
+        <column name="age">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">age</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Age</item>
+                </item>
+            </argument>
+        </column>
+        <column name="country">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="editor" xsi:type="array">
+                        <item name="editorType" xsi:type="string">country</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">true</item>
+                        </item>
+                    </item>
+                    <item name="label" xsi:type="string" translate="true">Country</item>
+                </item>
+            </argument>
+        </column>
+      
+        <column name="created_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+             <filter>dateRange</filter>
+             <dataType>date</dataType>
+              <label translate="true">Created</label>
+                <editor>
+                <editorType>date</editorType>
+                <validation>
+                <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                </editor>
+            </settings>
+        </column>
+         <column name="update_at" class="Magento\Ui\Component\Listing\Columns\Date" component="Magento_Ui/js/grid/columns/date">
+            <settings>
+             <filter>dateRange</filter>
+             <dataType>date</dataType>
+              <label translate="true">Modified</label>
+                <editor>
+                <editorType>date</editorType>
+                <validation>
+                <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+                </editor>
+            </settings>
+        </column>
+
+      <actionsColumn name="actions" class = "DCKAP\Adminmodule\Ui\Component\Listing\Grid\Column\Action">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="resizeEnabled" xsi:type="boolean">false</item>
+                    <item name="resizeDefaultWidth" xsi:type="string">107</item>
+                    <item name="indexField" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </actionsColumn>
+    </columns>
+</listing>
+
+

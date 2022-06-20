@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+       <add id="DCKAP_Adminmodule::dckap" title="DCKAP" module="DCKAP_Adminmodule" sortOrder="51" resource="DCKAP_Adminmodule::dckap"/>
+        <add id="DCKAP_Adminmodule::customcontent" title="Custom Content" module="DCKAP_Adminmodule" sortOrder="10" action="mymodule/create/index" resource="DCKAP_Adminmodule::customcontent" parent="DCKAP_Adminmodule::dckap"/>
+        <add id="DCKAP_Adminmodule::allcustomers" title="All Customers" module="DCKAP_Adminmodule" sortOrder="99" parent="DCKAP_Adminmodule::dckap" action="mymodule/customer/index" resource="DCKAP_Adminmodule::allcustomers"/>
+    </menu>
+</config>
+
+
+<!--Parent: Value is the ID of the main menu. It specifies the sub menu belongs to parentory menu.
+Action: Direct URL if clicking to the menu, as format [router_name]/[controller_name]/[action_name].  In our example, menu links with module mymodule, controller Create and action Index. -->
+<!-- and ends with -->
