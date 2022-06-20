@@ -1,0 +1,48 @@
+<?php 
+
+$dats = \Magento\Framework\App\ObjectManager::getInstance();
+$store = $dats->get('Magento\Store\Model\StoreManagerInterface')->getStore();
+
+$getstatesOptions =  $store->getConfig('states_section/group_customstates/states_required');
+
+//2,4,6,8,12,13,14,15,19,26,27,28,54,55,56,57,58,60
+    $states = array();
+
+    $mystates = explode(",",$getstatesOptions);
+    foreach($mystates as $states_id)
+    {
+
+     // echo '<pre>';print_r($states_id);exit;
+            if($states_id)
+            {
+
+               /*$region[] = $dats->create('Magento\Directory\Model\ResourceModel\Region\Collection')
+                        ->addFieldToFilter('region_id', ['eq' => $states_id])
+                        ->getFirstItem();*/
+               $region = $dats->create('Magento\Directory\Model\Region')
+                        ->load($states_id);
+                $states[$states_id] =  $region->getName();
+            }
+    }
+
+#echo '<pre>';print_r($states);exit;
+
+#echo '<pre>';print_r($getstatesOptions);exit;
+
+?>
+
+<div id="modal-content">
+    <div class="modal-inner-content">
+        <h2>Item has been added to cart.</h2>
+        <p>we ship alcoholic products only to these states</p>
+        <p><?php echo '<ul>';
+        foreach ($states as $pitem) {
+        echo '<li>'.$pitem.'</li>';
+        }
+        echo '</ul>'; ?>
+            
+        </p>
+    </div>
+</div>
+
+

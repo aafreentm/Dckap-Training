@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+  <head>
+        <css src="DCKAP_AlcoholicModule::css/colorcart.css"/>
+   </head>
+
+   <body>
+     <referenceContainer name="content">
+      <referenceBlock name="category.products.list">
+       <action method="setTemplate">
+          <argument name="template" xsi:type="string">DCKAP_AlcoholicModule::catalog/product/view/list.phtml</argument>
+       </action>
+  </referenceBlock>
+    </referenceContainer>
+   </body>
+</page>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+     <system>
+         <tab id="tab_id" translate="label" sortOrder="110">
+             <label>My Project</label>
+         </tab>
+       
+        <section id="states_section" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+             <class>separator-top</class>
+             <label>Custom State</label>
+             <tab>tab_id</tab>
+             <resource>DCKAP_AlcoholicModule::configuration</resource>
+
+            <group id="group_customstates" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                 <label>General Custom State Configuration</label>
+                 <attribute type="expanded">1</attribute>
+                 <!-- <field id="address_country_id" translate="Custom Country" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Countries Options</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                </field> -->
+                <field id="states_required" translate="label" type="multiselect" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+               <label>States Options</label>
+                <source_model>DCKAP\AlcoholicModule\Model\Config\Backend\Region</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+            </group>
+        </section>
+     </system>
+</config>
