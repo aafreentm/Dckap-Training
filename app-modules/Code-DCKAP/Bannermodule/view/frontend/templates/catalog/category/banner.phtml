@@ -3,18 +3,26 @@
 
 
 /*****************image url for media folder****/
-$getdatass = \Magento\Framework\App\ObjectManager::getInstance();
+/*$getdatass = \Magento\Framework\App\ObjectManager::getInstance();
 $store = $getdatass->get('Magento\Store\Model\StoreManagerInterface')->getStore();
-$imageUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'custom_banner/banner' ;
+$imageUrl = $store->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'custom_banner/banner' ;*/
 
 /*****************image name from media folder****/
-$image =  $store->getConfig('section_custombanner/group_custombanner/upload_image_id');
+
+//$config = $block->getLayout()->createBlock(\Magento\Config\Block\System\Config\Form::class);
+//$image = $config->getConfigValue('section_custombanner/group_custombanner/upload_image_id');
+//$image =  $store->getConfig('section_custombanner/group_custombanner/upload_image_id');
 
 /****************category custom attribute value from catalgue/category in admin enable,disable***/
 
-$category = $getdatass->get('Magento\Framework\Registry')->registry('current_category'); //get current category
-       /* echo $category->getId();
-        echo $category->getName();*/
+
+$config = $block->getLayout()->createBlock(\Magento\Config\Block\System\Config\Form::class);
+$image = $config->getConfigValue('section_custombanner/group_custombanner/upload_image_id');
+
+
+$blockObj= $block->getLayout()->createBlock('DCKAP\Bannermodule\Block\Current');
+$category = $blockObj->getCurrentCategory(); //get current category
+       
     if($category !=''){   
       $categoryId = $category->getId();
       $banner_enable= $category->getData('custom_banner_enable');

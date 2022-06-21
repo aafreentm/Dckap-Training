@@ -9,13 +9,12 @@
 /** @var $block \Magento\Catalog\Block\Product\View */
 ?>
 <?php 
-$datsget = \Magento\Framework\App\ObjectManager::getInstance();
-$product_det = $datsget->get('Magento\Framework\Registry')->registry('current_product');//get current product
-//echo $product->getId();
-$categoryId = $product_det->getId();
-$alocholic_enable= $product_det->getData('enable_alcoholic_attribute');
 
-$_product = $block->getProduct(); ?>
+
+$_product = $block->getProduct(); 
+$alocholic_enable= $_product->getData('enable_alcoholic_attribute');
+
+?>
 <?php $buttonTitle = __('Add to Cart'); ?>
 <?php if ($_product->isSaleable()): ?>
 <div class="box-tocart">

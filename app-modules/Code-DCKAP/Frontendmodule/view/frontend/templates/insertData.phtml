@@ -1,10 +1,5 @@
 <?php 
        
-/****get only us states all *************/
-$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-$regionFactory = $objectManager->create('Magento\Directory\Model\ResourceModel\Region\CollectionFactory')->create();
-$regionFactory->addFieldToFilter('country_id', array('eq' => 'US'));
-#echo '<pre>';print_r($regionFactory->getData());exit;
 
 /*$custom_banner_enable = $objectManager->create('\Magento\Catalog\Model\ResourceModel\Category\CollectionFactory')->create()
             ->addAttributeToFilter('custom_banner_enable', '1');
@@ -33,7 +28,15 @@ $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
 */
  /*****/   
 
-$helper = \Magento\Framework\App\ObjectManager::getInstance()->get('DCKAP\Frontendmodule\Helper\Data'); 
+$helper = $this->helper('DCKAP\Frontendmodule\Helper\Data');
+/****get only us states all *************/
+/*$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$regionFactory = $objectManager->create('Magento\Directory\Model\ResourceModel\Region\CollectionFactory')->create();
+$regionFactory->addFieldToFilter('country_id', array('eq' => 'US'));*/
+
+$blockObj= $block->getLayout()->createBlock('DCKAP\Frontendmodule\Block\Regions');
+$regionFactory = $blockObj->getRegionsOfCountry(); 
+
 if($helper->isEnable()==1){    
 ?>
 
@@ -111,13 +114,13 @@ if($helper->isEnable()==1){
                          <label for="country" class="label"><span><?php /* @escapeNotVerified */ echo __('Country') ?></span>
                         </label>
 
-                        <?php if(count($regionFactory->getData()) > 0){?>
+                        <?php if(($regionFactory) !=''){?>
                         <select name="country" id="country" data-validate="{required:true}">
                             <option value="">--- Please select country ---</option>
-                            <?php foreach($regionFactory->getData() as $states)
+                            <?php foreach($regionFactory as $states)
                               {
                             ?>
-                                <option value="<?php echo $states['name']; ?>"><?php echo $states['name'] ?></option>
+                                <option value="<?php echo $states['label']; ?>"><?php echo $states['label'] ?></option>
                             <?php } ?>
                         </select>
                         <?php } ?>

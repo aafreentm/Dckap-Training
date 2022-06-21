@@ -1,9 +1,6 @@
 <?php
  $collection = $block->getEditData();          
-/****get only us states all *************/
-$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-$regionFactory = $objectManager->create('Magento\Directory\Model\ResourceModel\Region\CollectionFactory')->create();
-$regionFactory->addFieldToFilter('country_id', array('eq' => 'US'));
+
 #echo '<pre>';print_r($regionFactory->getData());exit;
 /*****/ 
 /****get countries all *************/
@@ -25,7 +22,16 @@ $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
             }
     }
 */
- /*****/   
+ /*****/ 
+
+ /****get only us states all *************/
+/*$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$regionFactory = $objectManager->create('Magento\Directory\Model\ResourceModel\Region\CollectionFactory')->create();
+$regionFactory->addFieldToFilter('country_id', array('eq' => 'US'));*/
+
+$blockObj= $block->getLayout()->createBlock('DCKAP\Frontendmodule\Block\Regions');
+$regionFactory = $blockObj->getRegionsOfCountry(); 
+
 ?>
 <div class="col-md-8">
         <form name="addData" method="post" id="addData" class="form"
@@ -86,13 +92,13 @@ $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
                          <label for="country" class="label"><span><?php /* @escapeNotVerified */ echo __('Country') ?></span>
                         </label>
                         
-                        <?php if(count($regionFactory->getData()) > 0){?>
+                        <?php if(($regionFactory) != ''){?>
                         <select name="country" id="country" data-validate="{required:true}">
                             <option value="">--- Please select country ---</option>
-                            <?php foreach($regionFactory->getData() as $states)
+                            <?php foreach($regionFactory as $states)
                               {
                             ?>
-                                <option value="<?php echo $states['name']; ?>" <?php if($collection['country']==$states['name']) echo 'selected="selected"'; ?> ><?php echo $states['name'] ?></option>
+                                <option value="<?php echo $states['label']; ?>" <?php if($collection['country']==$states['label']) echo 'selected="selected"'; ?> ><?php echo $states['label'] ?></option>
                             <?php } ?>
                         </select>
                         <?php } ?>

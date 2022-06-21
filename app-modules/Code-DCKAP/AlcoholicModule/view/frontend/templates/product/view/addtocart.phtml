@@ -1,29 +1,30 @@
 <?php 
 
-$dats = \Magento\Framework\App\ObjectManager::getInstance();
-$store = $dats->get('Magento\Store\Model\StoreManagerInterface')->getStore();
+$blockObj= $block->getLayout()->createBlock('DCKAP\AlcoholicModule\Block\Addtocart\Js');
+$data_ship = $blockObj->getShippingregion();
 
-$getstatesOptions =  $store->getConfig('states_section/group_customstates/states_required');
+ /*  REFERnce code of my
+$config = $block->getLayout()->createBlock(\Magento\Config\Block\System\Config\Form::class);
+$configValue = $config->getConfigValue('states_section/group_customstates/states_required');
+//echo '<pre>';print_r($data);exit;
 
-//2,4,6,8,12,13,14,15,19,26,27,28,54,55,56,57,58,60
+$getstatesOptions =  $configValue;
     $states = array();
 
-    $mystates = explode(",",$getstatesOptions);
+  $mystates = explode(",",$getstatesOptions);
     foreach($mystates as $states_id)
     {
-
-     // echo '<pre>';print_r($states_id);exit;
             if($states_id)
             {
 
-               /*$region[] = $dats->create('Magento\Directory\Model\ResourceModel\Region\Collection')
+               $region[] = $dats->create('Magento\Directory\Model\ResourceModel\Region\Collection')
                         ->addFieldToFilter('region_id', ['eq' => $states_id])
-                        ->getFirstItem();*/
+                        ->getFirstItem();
                $region = $dats->create('Magento\Directory\Model\Region')
                         ->load($states_id);
                 $states[$states_id] =  $region->getName();
             }
-    }
+    }*/
 
 #echo '<pre>';print_r($states);exit;
 
@@ -35,13 +36,14 @@ $getstatesOptions =  $store->getConfig('states_section/group_customstates/states
     <div class="modal-inner-content">
         <h2>Item has been added to cart.</h2>
         <p>we ship alcoholic products only to these states</p>
-        <p><?php echo '<ul>';
-        foreach ($states as $pitem) {
+        
+       <p><?php echo '<ul>';
+        foreach ($data_ship as $pitem) {
         echo '<li>'.$pitem.'</li>';
         }
         echo '</ul>'; ?>
             
-        </p>
+        </p> 
     </div>
 </div>
 

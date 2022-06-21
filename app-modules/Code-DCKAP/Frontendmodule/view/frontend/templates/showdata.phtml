@@ -3,7 +3,9 @@
 
 
  $collection = $block->getCollection();
-  $helper = \Magento\Framework\App\ObjectManager::getInstance()->get('DCKAP\Frontendmodule\Helper\Data');
+ $helper = $this->helper('DCKAP\Frontendmodule\Helper\Data');
+    
+ // $helper = \Magento\Framework\App\ObjectManager::getInstance()->get('DCKAP\Frontendmodule\Helper\Data');
   #echo '<pre>';print_r($helper->isEnable());exit;
 if ($collection->count()) {
 ?>
