@@ -1,10 +1,10 @@
-var config =
+/*var config =
     {
 
     paths: {
     'Magento_Checkout/template/shipping': 'DCKAP_AlcoholicModule/template/shipping'
     }
-        /*"map":
+        "map":
         {
            '*':
                {
@@ -12,5 +12,5 @@ var config =
                 'Magento_Checkout/template/shipping': "DCKAP_AlcoholicModule/template/shipping"
                
                }
-        }*/
-    };
+        }
+    };*/

@@ -348,6 +348,7 @@ return [
         'DCKAP_Bannermodule' => 1,
         'DCKAP_Frontendmodule' => 1,
         'DCKAP_Serializer' => 1,
+        'DCKAP_TextaddModule' => 1,
         'Dotdigitalgroup_Email' => 1,
         'Dotdigitalgroup_Chat' => 1,
         'Dotdigitalgroup_ChatGraphQl' => 1,

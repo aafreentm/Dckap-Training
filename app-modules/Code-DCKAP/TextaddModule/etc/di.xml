@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="custom" xsi:type="string">sales_order.custom</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+   <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <plugin name="sales_order_additional_columns" type="DCKAP\TextaddModule\Plugin\AddColumnsSalesOrderGridCollection" sortOrder="20"  />
+    </type> 
+<type name="Magento\Checkout\Api\PaymentInformationManagementInterface">
+        <plugin name="order_add_text_order_save-in-order" type="DCKAP\TextaddModule\Plugin\Model\PaymentInformationManagement" sortOrder="10"/>
+  </type>
+</config>
+
+<!-- 
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Checkout\Model\PaymentInformationManagement">
+        <plugin name="set_payment_data_before_save"
+                type="Vendor\Module\Plugin\Model\SavePaymentPlugin" sortOrder="10"/>
+    </type>
+
+    <type name="Magento\Checkout\Model\GuestPaymentInformationManagement">
+        <plugin name="guest_set_payment_data_before_save"
+                type="Vendor\Module\Plugin\Model\GuestSavePaymentPlugin" sortOrder="10"/>
+    </type>
+</config> -->

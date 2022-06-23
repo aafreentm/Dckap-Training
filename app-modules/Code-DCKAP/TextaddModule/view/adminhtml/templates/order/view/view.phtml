@@ -1,0 +1,14 @@
+<?php 
+$currentOrder = $block->getLayout()->createBlock('\Magento\Sales\Block\Adminhtml\Order\View\Info')->getOrder(); 
+$currentCustom = $currentOrder->getCustom();
+
+?>
+
+<section class="admin__page-section order-view-billing-shipping">
+    <div class="admin__page-section-title">
+        <span class="title"><?php echo $block->myFunction();?></span>
+    </div>
+    <div class="admin__page-section-content">
+        <p><?php echo $currentCustom;?></p>
+    </div>
+</section>

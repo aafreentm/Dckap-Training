@@ -36,3 +36,5 @@ public function getDeleteUrl()
 return $this->getUrl('*/*/delete', ['id' => $this->getModelId()]);
 }
 }
+
+?>

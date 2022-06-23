@@ -29,3 +29,5 @@ public function getBackUrl()
 return $this->getUrl('*/*/');
 }
 }
+
+?>

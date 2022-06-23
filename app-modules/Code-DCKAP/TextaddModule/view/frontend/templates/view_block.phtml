@@ -1,0 +1,17 @@
+<?php 
+$currentOrder = $block->getLayout()->createBlock('\Magento\Sales\Block\Adminhtml\Order\View\Info')->getOrder(); 
+$currentCustom = $currentOrder->getCustom();
+
+?>
+
+<div class='block block-order-details-view'>
+     <div class="block-title">
+        <strong><?php echo $block->getCustomData();?></strong>
+
+    </div>
+    <div class="block-content">
+       <p><?php echo $currentCustom;?></p>  
+</div> 
+</div> 
+  
+
