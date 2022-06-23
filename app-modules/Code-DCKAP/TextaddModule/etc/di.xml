@@ -15,6 +15,7 @@
 <type name="Magento\Checkout\Api\PaymentInformationManagementInterface">
         <plugin name="order_add_text_order_save-in-order" type="DCKAP\TextaddModule\Plugin\Model\PaymentInformationManagement" sortOrder="10"/>
   </type>
+  
 </config>
 
 <!-- 
